@@ -1,7 +1,9 @@
 package com.example.dao;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
 import com.example.domain.LoginLog;
 
 @Repository
@@ -13,6 +15,7 @@ public class LoginLogDao {
 		this.jdbcTemplate = jdbcTemplate;
 	}
 
+    // 保存登录日志 SQL
     private final static String INSERT_LOGIN_LOG_SQL = "INSERT INTO t_login_log (user_id, ip, login_datetime) VALUES (?, ?, ?)";
     
     public void insertLoginLog(LoginLog log) {
