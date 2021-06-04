@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.example.demo.domain.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
@@ -63,4 +65,13 @@ public class UserDao {
         });
     }
 
+    public void updateLoginInfo(User user) {
+        jdbcTemplate.update(UPDATE_LOGIN_INFO_SQL, new Object[] {user.getLastVisit(), user.getLastIp(), user.getCredits(), user.getLastIp()});
+    }
+
+
+    @Autowired
+    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 }
